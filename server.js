@@ -7,6 +7,13 @@ function formatDate(date) {
   return months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
 }
 
+app.get('/whoami', function (req, res) {
+  var ip = req.connection.remoteAddress;
+  var lang = req.headers["accept-language"];
+  var software = req.headers["user-agent"];
+  res.send('{"ip_address": "' + ip + '", "software": "' + software + '", "language": "' + lang + '"}');
+});
+
 app.get('/:time', function (req, res) {
   if (req.params.time) {
     var intTime = parseInt(req.params.time);
@@ -23,13 +30,6 @@ app.get('/:time', function (req, res) {
   } else {
     res.send('{"unix": null, "natural": null}');
   }
-});
-
-app.get('/whoami', function (req, res) {
-  var ip = req.connection.remoteAddress;
-  var lang = req.headers["accept-language"];
-  var software = req.headers["user-agent"];
-  res.send('{"ip_address": "' + ip + '", "software": "' + software + '", "language": "' + lang + '"}');
 });
 
 app.get('/', function (req, res) {
