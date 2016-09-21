@@ -10,7 +10,13 @@ function formatDate(date) {
 app.get('/whoami', function (req, res) {
   var ip = req.connection.remoteAddress;
   var lang = req.headers["accept-language"];
-  var software = req.headers["user-agent"];
+  var user_agent = req.headers["user-agent"];
+  var software = /\(([^)]+)\)/.exec(user_agent);
+  if (software) {
+    software = software[1];
+  } else {
+    software = user_agent;
+  }
   res.send('{"ip_address": "' + ip + '", "software": "' + software + '", "language": "' + lang + '"}');
 });
 
