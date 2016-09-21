@@ -10,7 +10,7 @@ app.get('/:time', function (req, res) {
   if (req.params.time) {
     var intTime = parseInt(req.params.time);
     if (intTime || req.params.time == "0") {
-      var date = new Date(intTime);
+      var date = new Date(intTime * 1000);
     } else {
       var date = new Date(req.params.time);
     }
