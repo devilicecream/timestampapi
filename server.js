@@ -8,14 +8,19 @@ function formatDate(date) {
 
 app.get('/:time', function (req, res) {
   if (req.params.time) {
-    var date = new Date(req.params.time);
+    var intTime = parseInt(req.params.time);
+    if (intTime || req.params.time == "0") {
+      var date = new Date(intTime);
+    } else {
+      var date = new Date(req.params.time);
+    }
     if (date == "Invalid Date") {
       res.send('{"unix": null, "natural": null}');
     } else {
       res.send('{"unix": ' + date.getTime() / 1000 + ', "natural": "' + formatDate(date) + '"}');
     }
   } else {
-    res.send('Hello World!');
+    res.send('{"unix": null, "natural": null}');
   }
 });
 
