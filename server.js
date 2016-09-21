@@ -24,6 +24,10 @@ app.get('/:time', function (req, res) {
   }
 });
 
+app.get('/', function (req, res) {
+  res.send('<h1>Timestamp Microservice</h1><br /><h4>Try to call <a href="/December%2010,%202016">/December%2010,%202016</a> or <a href="/1481328000">/1481328000</a> to test the microservice.</h4>')
+});
+
 app.listen(8080, function () {
   console.log('Example app listening on port 8080!');
 });
