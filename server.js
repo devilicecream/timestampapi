@@ -25,6 +25,13 @@ app.get('/:time', function (req, res) {
   }
 });
 
+app.get('/whoami', function (req, res) {
+  var ip = req.connection.remoteAddress;
+  var lang = req.headers["accept-language"];
+  var software = req.headers["user-agent"];
+  res.send('{"ip_address": "' + ip + '", "software": "' + software + '", "language": "' + lang + '"}');
+});
+
 app.get('/', function (req, res) {
   res.send('<h1>Timestamp Microservice</h1><hr /><p>Try to call <a href="/December%2010,%202016">/December%2010,%202016</a> or <a href="/1481328000">/1481328000</a> to test the microservice.</p>')
 });
