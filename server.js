@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var port = process.env.PORT || 8080;
 
 function formatDate(date) {
   var months = ["January", "February", "March", "April", "May",  "June", "July", "August", "September", "October", "November", "December"];
@@ -28,6 +29,6 @@ app.get('/', function (req, res) {
   res.send('<h1>Timestamp Microservice</h1><hr /><p>Try to call <a href="/December%2010,%202016">/December%2010,%202016</a> or <a href="/1481328000">/1481328000</a> to test the microservice.</p>')
 });
 
-app.listen(8080, function () {
-  console.log('Example app listening on port 8080!');
+app.listen(port, function () {
+  console.log('Example app listening on port ' + port);
 });
