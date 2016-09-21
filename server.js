@@ -3,7 +3,7 @@ var app = express();
 
 function formatDate(date) {
   var months = ["January", "February", "March", "April", "May",  "June", "July", "August", "September", "October", "November", "December"];
-  return months[date.getMonth()] + ' ' + date.getDay() + ', ' + date.getFullYear();
+  return months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
 }
 
 app.get('/:time', function (req, res) {
