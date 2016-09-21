@@ -8,7 +8,7 @@ function formatDate(date) {
 }
 
 app.get('/whoami', function (req, res) {
-  var ip = req.connection.remoteAddress;
+  var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   var lang = req.headers["accept-language"];
   var user_agent = req.headers["user-agent"];
   var software = /\(([^)]+)\)/.exec(user_agent);
